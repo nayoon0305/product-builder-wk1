@@ -1,14 +1,197 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윤사랑외과 | 검진 결과 해석 및 예약</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="app">
+        <!-- 상단바 -->
+        <header class="header">
+            <div class="container">
+                <h1 class="logo" onclick="showScreen('home')">윤사랑외과</h1>
+                <div class="header-links">
+                    <span>전화</span> | <span>오시는 길</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- 홈 화면 (A안 기준) -->
+            <section id="screen-home" class="screen active">
+                <div class="hero">
+                    <h2 class="headline">타원 건강검진 결과,<br>어떻게 해석해야 할지 알려드립니다.</h2>
+                    <p class="subcopy">결과지에 나온 이상소견을 쉽게 설명하고,<br>필요한 검사와 예약까지 바로 연결합니다.</p>
+                    <div class="cta-group">
+                        <button class="btn btn-primary btn-lg" onclick="showScreen('result-interpretation')">검진 결과 해석하기</button>
+                        <div class="secondary-ctas">
+                            <button class="btn btn-outline" onclick="showScreen('symptom-checker')">증상으로 확인하기</button>
+                            <button class="btn btn-outline" onclick="showScreen('questionnaire')">예약하기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-selection">
+                    <h3>빠른 선택</h3>
+                    <div class="tag-group">
+                        <span class="tag">유방촬영</span>
+                        <span class="tag">유방초음파</span>
+                        <span class="tag">갑상선초음파</span>
+                        <span class="tag">갑상선피검사</span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <ul>
+                        <li>• 결과 사진 업로드 또는 항목 선택</li>
+                        <li>• 추가 검사 필요 여부 안내</li>
+                        <li>• 필요 시 윤사랑외과 예약 연결</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MVP 1: 결과 해석 -->
+            <section id="screen-result-interpretation" class="screen">
+                <button class="btn-back" onclick="showScreen('home')">← 뒤로가기</button>
+                <h2>검진 결과를 선택해 주세요</h2>
+                <p class="description">타원 건강검진에서 나온 결과를 선택하면,<br>해당 소견이 어떤 의미인지 쉽게 설명해드립니다.</p>
+                
+                <div class="form-group">
+                    <h3>검사 종류</h3>
+                    <div class="selection-grid">
+                        <button class="select-item" onclick="toggleSelect(this)">유방촬영</button>
+                        <button class="select-item" onclick="toggleSelect(this)">유방초음파</button>
+                        <button class="select-item" onclick="toggleSelect(this)">갑상선초음파</button>
+                        <button class="select-item" onclick="toggleSelect(this)">갑상선피검사</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3>세부 소견</h3>
+                    <div class="selection-grid">
+                        <button class="select-item" onclick="toggleSelect(this)">치밀유방</button>
+                        <button class="select-item" onclick="toggleSelect(this)">종괴</button>
+                        <button class="select-item" onclick="toggleSelect(this)">비대칭</button>
+                        <button class="select-item" onclick="toggleSelect(this)">구조왜곡</button>
+                        <button class="select-item" onclick="toggleSelect(this)">결절</button>
+                        <button class="select-item" onclick="toggleSelect(this)">실질 불균일</button>
+                        <button class="select-item" onclick="toggleSelect(this)">기능이상</button>
+                    </div>
+                </div>
+
+                <div class="upload-area">
+                    <p>결과지 사진 업로드 (선택)</p>
+                    <input type="file" id="result-file" hidden>
+                    <label for="result-file" class="btn btn-outline btn-full">사진 선택하기</label>
+                </div>
+
+                <div class="notice-card">
+                    정확한 진단은 결과지 한 줄만으로 결정되지 않습니다. 이전 검사, 증상, 연령, 가족력을 함께 보고 판단합니다.
+                </div>
+
+                <div class="footer-btns">
+                    <button class="btn btn-primary btn-full" onclick="showScreen('test-helper')">결과 설명 보기</button>
+                </div>
+            </section>
+
+            <!-- MVP 2: 검사 선택 도우미 -->
+            <section id="screen-test-helper" class="screen">
+                <button class="btn-back" onclick="showScreen('result-interpretation')">← 뒤로가기</button>
+                <h2>다음 검사가 필요한지 확인해보세요</h2>
+                <p class="description">검진 결과에 따라 추가 영상검사, 세침검사,<br>또는 전문의 진료가 필요할 수 있습니다.</p>
+
+                <div class="question-list">
+                    <div class="question-card">
+                        <p>유방촬영에서 이상소견이 있나요?</p>
+                        <div class="yn-btns">
+                            <button class="btn btn-sm btn-outline">예</button>
+                            <button class="btn btn-sm btn-outline">아니오</button>
+                        </div>
+                    </div>
+                    <div class="question-card">
+                        <p>유방초음파에서 결절이 보였나요?</p>
+                        <div class="yn-btns">
+                            <button class="btn btn-sm btn-outline">예</button>
+                            <button class="btn btn-sm btn-outline">아니오</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4>추천 안내</h4>
+                    <p>추가 영상검사 또는 전문의 상담이 권장될 수 있습니다. 정확한 상태 확인을 위해 내원을 추천드립니다.</p>
+                </div>
+
+                <div class="footer-btns">
+                    <button class="btn btn-primary btn-full" onclick="showScreen('questionnaire')">추천 검사 확인하기</button>
+                </div>
+            </section>
+
+            <!-- MVP 3: 예약 전 문진 -->
+            <section id="screen-questionnaire" class="screen">
+                <button class="btn-back" onclick="showScreen('home')">← 뒤로가기</button>
+                <h2>진료 전 꼭 필요한 정보만 확인합니다</h2>
+                <p class="description">예약 전에 간단한 문진을 완료해 주시면,<br>진료 시간을 더 효율적으로 사용할 수 있습니다.</p>
+
+                <form id="pre-visit-form" onsubmit="event.preventDefault(); alert('예약이 완료되었습니다!');">
+                    <div class="input-group">
+                        <label>이름</label>
+                        <input type="text" placeholder="성함을 입력하세요">
+                    </div>
+                    <div class="input-group">
+                        <label>연락처</label>
+                        <input type="tel" placeholder="010-0000-0000">
+                    </div>
+                    <div class="input-group">
+                        <label>이상소견 문구</label>
+                        <textarea placeholder="결과지에 적힌 내용을 입력해주세요"></textarea>
+                    </div>
+                    <div class="notice-small">
+                        작성하신 내용은 진료 준비를 위해 사용됩니다. 복잡한 내용은 오시기 전에 모두 쓰지 않으셔도 됩니다.
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">문진 완료 후 예약하기</button>
+                </form>
+            </section>
+
+            <!-- MVP 4: 증상 확인 -->
+            <section id="screen-symptom-checker" class="screen">
+                <button class="btn-back" onclick="showScreen('home')">← 뒤로가기</button>
+                <h2>어떤 증상이 있으신가요?</h2>
+                <p class="description">증상이 있으면 검진 결과가 없더라도<br>진료가 필요할 수 있습니다.</p>
+
+                <div class="symptom-group">
+                    <h3>유방 관련</h3>
+                    <div class="selection-grid">
+                        <button class="select-item" onclick="toggleSelect(this)">유방통</button>
+                        <button class="select-item" onclick="toggleSelect(this)">만져지는 멍울</button>
+                        <button class="select-item" onclick="toggleSelect(this)">유두분비물</button>
+                    </div>
+                </div>
+
+                <div class="symptom-group">
+                    <h3>갑상선/전신 관련</h3>
+                    <div class="selection-grid">
+                        <button class="select-item" onclick="toggleSelect(this)">피로</button>
+                        <button class="select-item" onclick="toggleSelect(this)">체중변화</button>
+                        <button class="select-item" onclick="toggleSelect(this)">목앞 멍울</button>
+                        <button class="select-item" onclick="toggleSelect(this)">두근거림</button>
+                    </div>
+                </div>
+
+                <div class="footer-btns">
+                    <button class="btn btn-primary btn-full" onclick="showScreen('questionnaire')">문진 이어서 하기</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-nav">
+            <div class="container">
+                <p>© 윤사랑외과 | 자주 묻는 질문 | 병원 소개 | 위치/주차</p>
+            </div>
+        </footer>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
