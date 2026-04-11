@@ -159,18 +159,23 @@ function setLanguage(lang) {
     currentLang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
+        if (translations[lang] && translations[lang][key]) {
+            const translation = translations[lang][key];
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = translations[lang][key];
+                el.placeholder = translation;
             } else {
-                el.innerHTML = translations[lang][key];
+                el.innerHTML = translation;
             }
         }
     });
 
+    // html lang 속성 업데이트
+    document.documentElement.lang = lang;
+
     // 버튼 활성화 상태 업데이트
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('onclick').includes(lang));
+        const btnLang = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+        btn.classList.toggle('active', btnLang === lang);
     });
 
     localStorage.setItem('preferredLang', lang);
