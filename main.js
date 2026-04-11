@@ -72,7 +72,8 @@ const translations = {
         "btn-send": "문의 보내기",
         "footer-copyright": "© 윤사랑외과",
         "footer-partner": "제휴 문의",
-        "footer-info": "병원 소개 | 위치/주차"
+        "footer-info": "병원 소개 | 위치/주차",
+        "comments-title": "문의 및 후기"
     },
     en: {
         "logo": "YoonSarang Clinic",
@@ -147,7 +148,8 @@ const translations = {
         "btn-send": "Send Message",
         "footer-copyright": "© YoonSarang Clinic",
         "footer-partner": "Partnership",
-        "footer-info": "About Us | Location"
+        "footer-info": "About Us | Location",
+        "comments-title": "Reviews & Inquiries"
     }
 };
 
@@ -189,6 +191,16 @@ function toggleSelect(element) {
     element.classList.toggle('selected');
 }
 
+/**
+ * Disqus 로드 함수
+ */
+function loadDisqus() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://yoonsarang-clinic.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang') || 'ko';
     setLanguage(savedLang);
@@ -205,4 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('btn-primary');
         });
     });
+
+    // Disqus 초기 로드
+    loadDisqus();
 });
