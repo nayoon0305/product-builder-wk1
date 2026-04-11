@@ -184,11 +184,35 @@
                     <button class="btn btn-primary btn-full" onclick="showScreen('questionnaire')">문진 이어서 하기</button>
                 </div>
             </section>
+
+            <!-- 제휴 문의 -->
+            <section id="screen-partnership" class="screen">
+                <button class="btn-back" onclick="showScreen('home')">← 뒤로가기</button>
+                <h2>제휴 및 사업 문의</h2>
+                <p class="description">윤사랑외과와 함께할 파트너사를 기다립니다.<br>내용을 남겨주시면 담당자가 검토 후 연락드립니다.</p>
+
+                <form action="https://formspree.io/f/mykbawkz" method="POST">
+                    <div class="input-group">
+                        <label>담당자명 / 업체명</label>
+                        <input type="text" name="name" required placeholder="성함 또는 회사명을 입력하세요">
+                    </div>
+                    <div class="input-group">
+                        <label>회신받을 이메일</label>
+                        <input type="email" name="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>문의 내용</label>
+                        <textarea name="message" required style="height: 150px;" placeholder="제휴 제안 내용을 상세히 적어주세요"></textarea>
+                    </div>
+                    <input type="text" name="_gotcha" style="display:none">
+                    <button type="submit" class="btn btn-primary btn-full">문의 보내기</button>
+                </form>
+            </section>
         </main>
 
         <footer class="footer-nav">
             <div class="container">
-                <p>© 윤사랑외과 | 자주 묻는 질문 | 병원 소개 | 위치/주차</p>
+                <p>© 윤사랑외과 | <span onclick="showScreen('partnership')" style="cursor:pointer; color:var(--primary-color); font-weight:600;">제휴 문의</span> | 병원 소개 | 위치/주차</p>
             </div>
         </footer>
     </div>
