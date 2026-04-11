@@ -328,3 +328,38 @@ h2 {
     max-width: 480px;
     margin: 0 auto;
 }
+
+/* Language Switcher */
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-weight: 400;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.lang-btn.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.lang-btn:hover {
+    color: var(--primary-color);
+}
