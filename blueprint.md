@@ -1,18 +1,25 @@
-# Blueprint: Google Analytics Integration
+# Blueprint: Analytics & Tracking Integration
 
 ## Overview
-This project is a framework-less web application. This update integrates Google Analytics via the `gtag.js` script to track user engagement.
+This project is a framework-less web application. This update integrates Google Analytics and Microsoft Clarity to track user engagement and behavior.
 
 ## Project Outline
 - **Entry Point:** `index.html`
 - **Styles:** `style.css`
 - **Scripts:** `main.js`
-- **Analytics:** Google Tag Manager (G-XS8XSSHEJ5)
+- **Analytics:** 
+  - Google Tag Manager (G-XS8XSSHEJ5)
+  - Microsoft Clarity (wb0nrj40nd)
 
-## Current Change: Add Google Tag (gtag.js) - COMPLETED
-1. **Objective:** Insert the Google Tag script into the `<head>` of all HTML files.
+## Current Change: Add Microsoft Clarity
+1. **Objective:** Insert the Microsoft Clarity tracking script into the `<head>` of `index.html`.
 2. **Implementation Steps:**
-   - Locate the `<head>` tag in `index.html`. (Done)
-   - Prepend the `gtag.js` script immediately after the opening `<head>` tag. (Done)
+   - Locate the `<head>` tag in `index.html`.
+   - Append the Clarity script after the Google Tag script.
 3. **Verification:**
-   - Check `index.html` to ensure the script is correctly placed and the ID `G-XS8XSSHEJ5` is accurate. (Verified)
+   - Confirm the script with ID `wb0nrj40nd` is present in the `<head>`.
+
+## Deployment
+- **Method:** GitHub (manual push)
+- **Repository:** `https://github.com/nayoon0305/product-builder-wk1.git`
+- **Status:** Pushed to `main` branch.
