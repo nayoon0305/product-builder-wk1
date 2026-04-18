@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nayoon0305.github.io/product-builder-wk1/sitemap.xml
+Sitemap: https://product-builder-wk1.web.app/sitemap.xml
