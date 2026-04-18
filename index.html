@@ -494,6 +494,14 @@
           email: "someone@example.com" // example data
         }
       };
+      
+      // Enable screenshots, camera(video), and file attachments
+      Userback.native_screenshot = true;
+      Userback.widget_settings = {
+        attachments: true,
+        video: true
+      };
+
       (function(d) {
         var s = d.createElement('script');s.async = true;s.src = 'https://static.userback.io/widget/v1.js';(d.head || d.body).appendChild(s);
       })(document);
