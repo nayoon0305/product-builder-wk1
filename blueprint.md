@@ -15,22 +15,19 @@ This project is a framework-less web application for "Yoon Sarang Surgery" (์ค์
   - **Mandatory Legal Pages:** Privacy Policy and Terms of Service.
   - **Enhanced E-E-A-T:** Detailed doctor profile and clinical expertise signals.
   - **Freshness Signals:** "Latest Medical Guides" section.
-  - **Structured Data:** Synchronized JSON-LD (`MedicalClinic`, `FAQPage`).
+  - **Analytics & Feedback:** 
+    - Google Tag Manager (G-XS8XSSHEJ5)
+    - Microsoft Clarity (wb0nrj40nd)
+    - Userback (Feedback Service)
 
-## Current Change: AdSense Compliance & Content Expansion
-1. **Objective:** Resolve "no publisher content" violation and pass AdSense review.
-2. **Implementation Steps:**
-   - **Content Creation:** Wrote 3 original medical articles in KR/EN.
-   - **Legal Pages:** Implemented dedicated Privacy Policy and Terms of Service sections.
-   - **Navigation:** Updated footer with mandatory legal links and hospital info.
-   - **I18n Update:** Expanded `main.js` with comprehensive translations for all new content.
-   - **UI Updates:** Added "About Clinic" and "Medical Column" navigation to the home screen.
-3. **Verification:**
-   - Confirm all 10+ screens are navigable.
-   - Verify that substantial text content (300+ words) is now indexable.
-   - Check legal links in the footer.
-
-## Deployment
+  ## Current Change: User Feedback Integration
+  1. **Objective:** Add a user feedback and bug reporting service to improve site quality and user engagement.
+  2. **Implementation Steps:**
+     - **Script Integration:** Added the Userback widget script to `index.html`.
+     - **Configuration:** Initialized with the provided access token and placeholder user data.
+  3. **Verification:**
+     - Confirm the Userback widget appears on the site.
+     - Verify that feedback can be submitted through the widget.
 - **Method:** GitHub (manual push)
 - **Repository:** `https://github.com/nayoon0305/product-builder-wk1.git`
 - **Status:** AdSense optimization complete. Ready for re-review.
